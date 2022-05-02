@@ -12,6 +12,7 @@ class Kandidat extends Model
     protected $fillable = [
         'nim', 'nama', 'id_user'
     ];
+    
     public function atribut()
     {
         return $this->hasMany(Atribut::class, 'kandidat_id');

@@ -16,6 +16,7 @@ class KandidatComponent extends Component
 {
     use WithPagination;
     use WithFileUploads;
+    public $kandidat;
     public $kandidat_id, $nim, $nama, $ipk, $keaktifan, $pengalaman_menjabat, $kesehatan, $komunikasi, $problem_solving, $kedisiplinan, $visi_misi;
     public $kriterias;
     public $isModal = 0;
@@ -35,21 +36,27 @@ class KandidatComponent extends Component
     public function renderData()
     {
         $session_id = Auth::user()->id;
+        // $this->kandidat = Kandidat::where([
+        //     ['id_user', '=', $session_id],
+        // ])->get();
         $this->kriterias = Kriteria::all();
     }
 
     public function renderUser()
     {
+        // $session_id = Auth::user()->id;
+        // $this->kandidat = Kandidat::where([
+        //     ['id_user', '=', $session_id],
+        // ])->get();
         $user = new Kandidat();
         if ($this->search) $user = $user->where(function($user) {
             return $user->where('nim', 'like', '%'.$this->search.'%')
                 ->orWhere('nama', 'like', '%'.$this->search.'%');
         });
 
-        return $user->paginate(10);
+        return $user->paginate(5);
     }
-
-
+    
     public function render()
     {
         $this->renderData();
@@ -58,11 +65,10 @@ class KandidatComponent extends Component
         ]);
     }
 
-    public function simpan()
-    {
-        $this->validate([
-            'nim' => 'required|max:8',
-            'nama' => 'required|string',
+    protected function rules() {
+        return [
+            'nim' => 'required|max:8|unique:kandidat,nim,' . $this->kandidat_id,
+            'nama' => 'required|string|max:255',
             'ipk' => 'required|numeric|max:100',
             'keaktifan' => 'required|numeric|max:100',
             'pengalaman_menjabat' => 'required|numeric|max:100',
@@ -71,7 +77,20 @@ class KandidatComponent extends Component
             'problem_solving' => 'required|numeric|max:100',
             'kedisiplinan' => 'required|numeric|max:100',
             'visi_misi' => 'required|numeric|max:100'
-        ]);
+        ];
+    }
+
+    protected function messages() {
+        return[
+            'nim.unique' => 'Nim Sudah Ada!!',
+            'nim.required' => 'Nim Wajib Diisi !',
+        ];
+
+    }
+
+    public function simpan()
+    {
+        $validatedData = $this->validate();
 
         DB::beginTransaction();
         $kandidat_id = $this->kandidat_id;

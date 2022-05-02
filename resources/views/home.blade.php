@@ -18,7 +18,7 @@
                 <div class="card-body">
                     Catatan Sistem (Program Bantu Seleksi Kandidat Calon Pimpinan Lembaga Kemahasiswaan):
                     <br> 
-                    1. Validasi Tambah Data (-)
+                    1. Validasi Tambah Data (+)
                     <br>
                     2. Session Login Berdasarkan Id yang Login (-)
                     <br>

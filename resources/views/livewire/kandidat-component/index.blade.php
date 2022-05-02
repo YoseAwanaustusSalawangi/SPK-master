@@ -22,14 +22,6 @@
             </div>
         </div>
 
-        <!-- @if($users->lastPage() > 1)
-            <div class="row">
-                <div class="col-12 mt-3 ">
-                    {{$users->links()}}
-                </div>
-            </div>
-        @endif -->
-
     </div>
     <!-- /.card-header -->
 
@@ -88,7 +80,6 @@
                 </div>
             </div>
         </div>
-
     @endif
 
 </div>
