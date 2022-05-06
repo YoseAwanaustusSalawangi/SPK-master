@@ -11,6 +11,7 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
+                    
                 </div>
             </div>
             <div class="col-3 mt-1">
@@ -46,26 +47,30 @@
             </thead>
             <tbody>
             @foreach ($users as $user)
-                <tr>
-                    <td class=" align-middle">{{$user->id}}</td>
-                    <td class=" align-middle">{{$user->nim}}</td>
-                    <td class=" align-middle">{{$user->nama}}</td>
-                    @foreach($kriterias as $kriteria)
+                @if($user == null)
+                    <td>Belum Ada Data Kandidat</td>
+                @else
+                    <tr>
+                        <td class=" align-middle">{{$user->id}}</td>
+                        <td class=" align-middle">{{$user->nim}}</td>
+                        <td class=" align-middle">{{$user->nama}}</td>
+                        @foreach($kriterias as $kriteria)
+                            <td class="text-center align-middle">
+                                <small>
+                                    {{$user->currentAtribut($kriteria->id)->caption}}
+                                </small>
+                            </td>
+                        @endforeach
                         <td class="text-center align-middle">
-                            <small>
-                                {{$user->currentAtribut($kriteria->id)->caption}}
-                            </small>
+                            <a href="#" wire:click.prevent="edit({{$user->id}})" class="btn btn-primary" title="Edit Data">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                            <a href="#" onclick="deleteConfirmation(event, {{$user->id}})" wire.click="" class="btn btn-danger" title="Hapus Data">
+                                <i class="fa fa-trash"></i>
+                            </a>
                         </td>
-                    @endforeach
-                    <td class="text-center align-middle">
-                        <a href="#" wire:click.prevent="edit({{$user->id}})" class="btn btn-primary" title="Edit Data">
-                            <i class="fa fa-pencil-alt"></i>
-                        </a>
-                        <a href="#" onclick="deleteConfirmation(event, {{$user->id}})" wire.click="" class="btn btn-danger" title="Hapus Data">
-                            <i class="fa fa-trash"></i>
-                        </a>
-                    </td>
-                </tr>
+                    </tr>
+                @endif
             @endforeach
             </tbody>
         </table>

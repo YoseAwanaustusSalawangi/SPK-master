@@ -16,4 +16,8 @@
     @includeWhen($step==1, 'livewire.saw-component.tahap-1')
     @includeWhen($step==2, 'livewire.saw-component.tahap-2')
     @includeWhen($step==3, 'livewire.saw-component.tahap-3')
+    <div>
+        <!-- <a href="/cetak" class="btn btn-primary" target="_blank">CETAK PDF</a> -->
+    </div>
+    <br>
 </div>

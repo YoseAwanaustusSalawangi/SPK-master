@@ -36,3 +36,4 @@ Route::get('user', [
     \App\Http\Controllers\UserManagementController::class, 'index'
 ])->name('user');
 
+Route::get('/cetak', [App\Http\Controllers\SawController::class, 'cetak']);

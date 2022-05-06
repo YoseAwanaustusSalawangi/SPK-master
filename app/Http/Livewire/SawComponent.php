@@ -7,6 +7,8 @@ use App\Models\Kriteria;
 use App\Models\Kandidat;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
+use PDF;
+
 
 class SawComponent extends Component
 {
@@ -331,10 +333,6 @@ class SawComponent extends Component
             $datas[$key] = $data;
         }
 
-//        usort($datas, function ($a, $b) {
-//            return $a['skor'] > $b['skor'] ? -1 : 1;
-//        });
-
         $datas = $datas->sortByDesc(function ($a) {
             return $a['skor'];
         });
@@ -347,6 +345,7 @@ class SawComponent extends Component
         $this->ranking = $datas;
     }
 
+  
 
     public function errorKandidatMessage($string, $kandidat)
     {

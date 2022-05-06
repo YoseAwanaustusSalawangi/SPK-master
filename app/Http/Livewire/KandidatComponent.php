@@ -44,10 +44,11 @@ class KandidatComponent extends Component
 
     public function renderUser()
     {
-        // $session_id = Auth::user()->id;
-        // $this->kandidat = Kandidat::where([
-        //     ['id_user', '=', $session_id],
-        // ])->get();
+        $session_id = Auth::user()->id;
+        $this->kandidat = Kandidat::where([
+            ['id_user', '=', $session_id],
+        ])->get();
+
         $user = new Kandidat();
         if ($this->search) $user = $user->where(function($user) {
             return $user->where('nim', 'like', '%'.$this->search.'%')
@@ -69,7 +70,7 @@ class KandidatComponent extends Component
         return [
             'nim' => 'required|max:8|unique:kandidat,nim,' . $this->kandidat_id,
             'nama' => 'required|string|max:255',
-            'ipk' => 'required|numeric|max:100',
+            'ipk' => 'required|numeric|max:4',
             'keaktifan' => 'required|numeric|max:100',
             'pengalaman_menjabat' => 'required|numeric|max:100',
             'kesehatan' => 'required|numeric|max:100',
@@ -83,7 +84,17 @@ class KandidatComponent extends Component
     protected function messages() {
         return[
             'nim.unique' => 'Nim Sudah Ada!!',
-            'nim.required' => 'Nim Wajib Diisi !',
+            'nim.required' => 'Nim Wajib Diisi!',
+            'nim.max' => 'Nim Tidak Boleh Lebih dari 8!',
+            'nama.required' => 'Nama Wajib Diisi!',
+            'ipk.required' => 'IPK Wajib Diisi!',
+            'keaktifan.required' => 'IPK Wajib Diisi!',
+            'pengalaman_menjabat.required' => 'Pengalaman Menjabat Wajib Diisi!',
+            'kesehatan.required' => 'Kesehatan Wajib Diisi!',
+            'komunikasi.required' => 'Komunikasi Wajib Diisi!',
+            'problem_solving.required' => 'Problem-Solving Wajib Diisi!',
+            'kedisiplinan.required' => 'Kedisiplinan Wajib Diisi!',
+            'visi_misi.required' => 'Visi Misi Wajib Diisi!',
         ];
 
     }
