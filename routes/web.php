@@ -23,6 +23,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
 
 Auth::routes();
 
+Route::get('data', [
+    \App\Http\Controllers\DataController::class, 'index'
+])->name('data');
+
 Route::get('kandidat', [
     \App\Http\Controllers\KandidatController::class, 'index'
 ])->name('kandidat');
@@ -36,4 +40,8 @@ Route::get('user', [
     \App\Http\Controllers\UserManagementController::class, 'index'
 ])->name('user');
 
-Route::get('/pdf', [\App\Http\Controllers\ExportController::class, 'exportPDF'])->name('exportPDF');
+Route::get('/pdf', [
+    \App\Http\Controllers\ExportController::class, 'exportPDF'
+])->name('exportPDF');
+
+

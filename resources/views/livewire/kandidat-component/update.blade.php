@@ -13,9 +13,7 @@
 
         <div class="form-group">
             <label for="nama">Nama Kandidat</label>
-            <input type="text" onkeypress="return (event.charCode > 64 && 
-                    event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
-                    class="form-control @error('nama') is-invalid @enderror" wire:model="nama">
+            <input type="text"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama">
             @error('nama') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 
@@ -74,7 +72,6 @@
                 max="100" min="0" step="01">
             @error('visi_misi') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
-
     </div>
     <!-- /.card-body -->
 

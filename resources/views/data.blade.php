@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Data Nilai Kandidat')
+@section('title', 'Data Kandidat')
 
 @section('content_header')
-    <h3> Data Nilai Kandidat Calon Pimpinan Lembaga Kemahasiswaan UKDW</h3>
+    <h3> Data Kandidat Calon Pimpinan Lembaga Kemahasiswaan UKDW</h3>
 @stop
 
 @section('content')
     <div class="row">
         <div class="col-12">
-            @livewire('kandidat-component')
+        @livewire('data-component')
         </div>
     </div>
 @stop

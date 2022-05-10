@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'PROTEKSI SAW',
+    'title' => 'PROTEKSI',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>PROTEKSI </b>SAW',
+    'logo' => '<b>PROTEKSI </b>',
     'logo_img' => 'logo_KPU_UKDW.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'PROTEKSI SAW',
+    'logo_img_alt' => 'PROTEKSI',
 
     /*
     |--------------------------------------------------------------------------
@@ -232,6 +232,11 @@ return [
         ],
         [
             'text' => 'Data Kandidat',
+            'route'  => 'data',
+            'icon' => 'fas fa-file'
+        ],
+        [
+            'text' => 'Data Nilai Kandidat',
             'route'  => 'kandidat',
             'icon' => 'fas fa-file'
         ],

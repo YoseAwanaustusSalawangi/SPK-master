@@ -20,7 +20,7 @@ class KandidatComponent extends Component
     public $kandidat_id, $nim, $nama, $ipk, $keaktifan, $pengalaman_menjabat, $kesehatan, $komunikasi, $problem_solving, $kedisiplinan, $visi_misi;
     public $kriterias;
     public $isModal = 0;
-    public $search;
+    public $search; 
     protected $paginationTheme = 'bootstrap';
 
     public function openModal()
@@ -96,7 +96,6 @@ class KandidatComponent extends Component
             'kedisiplinan.required' => 'Kedisiplinan Wajib Diisi!',
             'visi_misi.required' => 'Visi Misi Wajib Diisi!',
         ];
-
     }
 
     public function simpan()
