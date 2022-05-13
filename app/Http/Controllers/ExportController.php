@@ -20,6 +20,6 @@ class ExportController extends Controller
     {
         $users = Kandidat::all();
         $pdf = PDF::loadView('livewire.saw-component.tahap-4', ['users' => $users]);
-        return $pdf->download('Data Kandidat'.'.pdf');
+        return $pdf->stream('Data Kandidat'.'.pdf');
     }
 }

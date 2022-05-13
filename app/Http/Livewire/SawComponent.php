@@ -215,7 +215,7 @@ class SawComponent extends Component
             return $d['kesehatan']->real_value > $acc ? $d['kesehatan']->real_value : $acc;
         }, $kesehatan_default);
 
-        //komunikasi-
+        //komunikasi
         $komunikasi_default = $first['komunikasi'];
         $komunikasi_default = $komunikasi_default ? $komunikasi_default->real_value : 0;
         $komunikasi_base = $datas->reduce(function ($acc, $d) {

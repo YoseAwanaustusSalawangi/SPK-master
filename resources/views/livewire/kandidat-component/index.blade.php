@@ -20,7 +20,7 @@
                         <i class="fa fa-plus"></i> Tambah
                     </button>
                     &nbsp;
-                    <a href="{{ route('exportPDF') }}" class="btn btn-secondary">Cetak PDF</a>
+                    <a href="{{ route('exportPDF') }}" class="btn btn-secondary" target="_blank">Cetak PDF</a>
                 </div>
             </div>
         </div>
