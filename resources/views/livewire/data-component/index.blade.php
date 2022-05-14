@@ -19,33 +19,56 @@
                 <tr>
                     <th class=" align-middle">ID *</th>
                     <th class=" align-middle">NIM</th>
-                    <th class=" align-middle">Nama Kandidat</th>
+                    <th class=" align-middle">Nama Mahasiswa</th>
                     <th class=" align-middle">CV</th>
                     <th class=" align-middle">Transkrip Nilai</th>
                     <th class=" align-middle">Surat Pengantar</th>
-                    <th class=" align-middle">Foto</th>
+                    <th class=" align-middle">Foto Kandidat</th>
+                    <th class=" align-middle">Status</th>
                     <th class="text-center vertical-center">Opsi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kandidat as $kandidat)
+                @foreach ($mahasiswa as $mahasiswa)
                 <tr>
-                    <td class=" align-middle">{{$kandidat->id}}</td>
-                    <td class=" align-middle">{{$kandidat->nim}}</td>
-                    <td class=" align-middle">{{$kandidat->nama}}</td>
-                    <td class=" align-middle">Belum Ada Data</td>
-                    <td class=" align-middle">Belum Ada Data</td>
-                    <td class=" align-middle">Belum Ada Data</td>
-                    <td class=" align-middle">Belum Ada Data</td>
+                    <td class=" align-middle">{{$mahasiswa->id}}</td>
+                    <td class=" align-middle">{{$mahasiswa->nim_mhs}}</td>
+                    <td class=" align-middle">{{$mahasiswa->nama_mhs}}</td>
+                    @if($mahasiswa->cv == null)
+                    <td>Belum Ada Dokumen</td>
+                    @else
+                    <td><a href="storage/{{$mahasiswa->cv}}" target="_blank">Unduh Dokumen</a></td>
+                    @endif
+                    @if($mahasiswa->transkrip_nilai == null)
+                    <td>Belum Ada Dokumen</td>
+                    @else
+                    <td><a target="_blank">Unduh Dokumen</a></td>
+                    @endif
+                    @if($mahasiswa->sk == null)
+                    <td>Belum Ada Dokumen</td>
+                    @else
+                    <td><a target="_blank">Unduh Dokumen</a></td>
+                    @endif
+                    @if($mahasiswa->foto == null)
+                    <td>Belum Ada Dokumen</td>
+                    @else
+                    <td><a href="storage/{{$mahasiswa->foto}}" target="_blank">Unduh Foto</a></td>
+                    @endif
+                    @if($mahasiswa->status == 0)
+                            <td>Menunggu Konfirmasi</td>
+                        @elseif($mahasiswa->status == 2)
+                            <td>Lengkap</td>
+                    @endif
                     <td class="text-center align-middle">
-                    <a href="#" wire:click.prevent="ubah({{$kandidat->id}})" class="btn btn-primary" title="Edit Data">
-                        <i class="fa fa-pencil-alt"></i>
-                    </a>
-                    <a href="#" onclick="deleteConfirmation(event, {{$kandidat->id}})" wire.click="" class="btn btn-danger"
-                        title="Hapus Data">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                </td>
+                        <a href="#" wire:click.prevent="ubah({{$mahasiswa->id}})" class="btn btn-primary"
+                            title="Edit Data">
+                            <i class="fa fa-pencil-alt"></i>
+                        </a>
+                        <a href="#" onclick="deleteConfirmation(event, {{$mahasiswa->id}})" wire.click=""
+                            class="btn btn-danger" title="Hapus Data">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

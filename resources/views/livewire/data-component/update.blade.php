@@ -1,27 +1,39 @@
 <!-- general form elements -->
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">{{$kandidat_id ? 'Update' : 'Tambah'}} Kandidat</h3>
+        <h3 class="card-title">{{$mahasiswa_id ? 'Update' : 'Tambah'}} Kandidat</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
         <div class="form-group">
-            <label for="nim">NIM</label>
-            <input type="number" class="form-control @error('nim') is-invalid @enderror" wire:model="nim">
-            @error('nim') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            <label for="nim_mhs">NIM</label>
+            <input type="number" class="form-control @error('nim_mhs') is-invalid @enderror" wire:model="nim_mhs">
+            @error('nim_mhs') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 
         <div class="form-group">
-            <label for="nama">Nama Kandidat</label>
-            <input type="text" class="form-control @error('nama') is-invalid @enderror" wire:model="nama">
-            @error('nama') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            <label for="nama_mhs">Nama Kandidat</label>
+            <input type="text" class="form-control @error('nama_mhs') is-invalid @enderror" wire:model="nama_mhs">
+            @error('nama_mhs') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
+
+        <form wire:submit.prevent="save">
+            <label for="cv">CV Kandidat</label><br>
+            <input type="file" class="@error('cv') is-invalid @enderror" wire:model="cv">
+            @error('cv') <span class="invalid-feedback">{{ $message }}</span> @enderror
+        </form>
+        <br>
+        <form wire:submit.prevent="save">
+            <label for="foto">Foto Kandidat</label><br>
+            <input type="file" class="@error('foto') is-invalid @enderror" wire:model="foto">
+            @error('foto') <span class="invalid-feedback">{{ $message }}</span> @enderror
+        </form>
     </div>
     <!-- /.card-body -->
 
     <div class="card-footer">
         <button type="submit" class="btn btn-primary" wire:click.prevent="save()">
-            {{$kandidat_id ? 'Ubah' : 'Tambah'}}
+            {{$mahasiswa_id ? 'Ubah' : 'Tambah'}}
         </button>
         <button type="submit" class="btn btn-primary" wire:click.prevent="cencel()">
             Batal

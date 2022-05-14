@@ -7,7 +7,7 @@
     <script>
         function deleteConfirmation(event, id) {
             event.preventDefault();
-            var cf = confirm('Apakah anda yakin akan menghapus data ?');
+            var cf = confirm('Apakah Anda Yakin Akan Menghapus Data ?');
             if (cf) @this.call('hapus', id);
         }
     </script>
