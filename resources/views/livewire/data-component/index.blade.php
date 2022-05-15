@@ -24,7 +24,6 @@
                     <th class=" align-middle">Transkrip Nilai</th>
                     <th class=" align-middle">Surat Pengantar</th>
                     <th class=" align-middle">Foto Kandidat</th>
-                    <th class=" align-middle">Status</th>
                     <th class="text-center vertical-center">Opsi</th>
                 </tr>
             </thead>
@@ -53,11 +52,6 @@
                     <td>Belum Ada Dokumen</td>
                     @else
                     <td><a href="storage/{{$mahasiswa->foto}}" target="_blank">Unduh Foto</a></td>
-                    @endif
-                    @if($mahasiswa->status == 0)
-                            <td>Menunggu Konfirmasi</td>
-                        @elseif($mahasiswa->status == 2)
-                            <td>Lengkap</td>
                     @endif
                     <td class="text-center align-middle">
                         <a href="#" wire:click.prevent="ubah({{$mahasiswa->id}})" class="btn btn-primary"

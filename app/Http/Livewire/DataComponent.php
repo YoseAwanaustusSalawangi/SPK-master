@@ -98,9 +98,7 @@ class DataComponent extends Component
             'nama_mhs' => $this->nama_mhs,
             'cv' => $this->cv->store('cv_pdf'),
             'foto' => $this->foto->store('photos'),
-
         ]);
-
 
         $mahasiswa_id ? $this->emit('success_message', 'Berhasil Memperbaharui Data')
             : $this->emit('success_message', 'Berhasil Menambah Data');

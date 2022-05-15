@@ -17,16 +17,17 @@
             @error('nama_mhs') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 
-        <form wire:submit.prevent="save">
-            <label for="cv">CV Kandidat</label><br>
-            <input type="file" class="@error('cv') is-invalid @enderror" wire:model="cv">
-            @error('cv') <span class="invalid-feedback">{{ $message }}</span> @enderror
-        </form>
-        <br>
-        <form wire:submit.prevent="save">
-            <label for="foto">Foto Kandidat</label><br>
-            <input type="file" class="@error('foto') is-invalid @enderror" wire:model="foto">
-            @error('foto') <span class="invalid-feedback">{{ $message }}</span> @enderror
+        <form wire:submit.prevent="save" id="form-upload" enctype="multipart/from-data">
+            <div class="form-group">
+                <label for="cv">CV Kandidat</label><br>
+                <input type="file" class="@error('cv') is-invalid @enderror" wire:model="cv">
+                @error('cv') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="foto">Foto Kandidat</label><br>
+                <input type="file" class="@error('foto') is-invalid @enderror" wire:model="foto">
+                @error('foto') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
         </form>
     </div>
     <!-- /.card-body -->
