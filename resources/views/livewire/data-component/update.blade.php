@@ -24,6 +24,16 @@
                 @error('cv') <span class="invalid-feedback">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
+                <label for="transkrip_nilai">Transkrip Nilai</label><br>
+                <input type="file" class="@error('transkrip_nilai') is-invalid @enderror" wire:model="transkrip_nilai">
+                @error('transkrip_nilai') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
+                <label for="sk">Surat Keterangan</label><br>
+                <input type="file" class="@error('sk') is-invalid @enderror" wire:model="sk">
+                @error('sk') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
                 <label for="foto">Foto Kandidat</label><br>
                 <input type="file" class="@error('foto') is-invalid @enderror" wire:model="foto">
                 @error('foto') <span class="invalid-feedback">{{ $message }}</span> @enderror

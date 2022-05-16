@@ -34,24 +34,24 @@
                     <td class=" align-middle">{{$mahasiswa->nim_mhs}}</td>
                     <td class=" align-middle">{{$mahasiswa->nama_mhs}}</td>
                     @if($mahasiswa->cv == null)
-                    <td>Belum Ada Dokumen</td>
+                    <td class=" align-middle">Belum Ada CV</td>
                     @else
-                    <td><a href="storage/{{$mahasiswa->cv}}" target="_blank">Unduh Dokumen</a></td>
+                    <td class=" align-middle"><a href="storage/{{$mahasiswa->cv}}" target="_blank">Unduh CV</a></td>
                     @endif
                     @if($mahasiswa->transkrip_nilai == null)
-                    <td>Belum Ada Dokumen</td>
+                    <td class=" align-middle">Belum Ada Transkrip Nilai</td>
                     @else
-                    <td><a target="_blank">Unduh Dokumen</a></td>
+                    <td class=" align-middle"><a href="storage/{{$mahasiswa->transkrip_nilai}}" target="_blank">Unduh Transkrip Nilai</a></td>
                     @endif
                     @if($mahasiswa->sk == null)
-                    <td>Belum Ada Dokumen</td>
+                    <td class=" align-middle">Belum Ada Surat Keterangan</td>
                     @else
-                    <td><a target="_blank">Unduh Dokumen</a></td>
+                    <td class=" align-middle"><a href="storage/{{$mahasiswa->sk}}" target="_blank">Unduh Surat Keterangan</a></td>
                     @endif
-                    @if($mahasiswa->foto == null)
-                    <td>Belum Ada Dokumen</td>
+                    @if(!empty($mahasiswa->foto))
+                    <td class=" align-middle"><a href="storage/{{$mahasiswa->foto}}" target="_blank">Unduh Foto</a></td>
                     @else
-                    <td><a href="storage/{{$mahasiswa->foto}}" target="_blank">Unduh Foto</a></td>
+                    <td class=" align-middle">Belum Ada Foto</td>
                     @endif
                     <td class="text-center align-middle">
                         <a href="#" wire:click.prevent="ubah({{$mahasiswa->id}})" class="btn btn-primary"
