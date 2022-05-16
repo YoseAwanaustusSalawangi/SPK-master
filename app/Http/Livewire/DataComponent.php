@@ -150,6 +150,8 @@ class DataComponent extends Component
     {
         $news = Mahasiswa::findOrFail($mahasiswa_id);
         unlink(storage_path('app/public/'.$news->cv));
+        unlink(storage_path('app/public/'.$news->transkrip_nilai));
+        unlink(storage_path('app/public/'.$news->sk)); 
         unlink(storage_path('app/public/'.$news->foto));    
         DB::beginTransaction();
         Mahasiswa::where('id', $mahasiswa_id)->delete();
@@ -163,6 +165,8 @@ class DataComponent extends Component
         $this->nim_mhs = null;
         $this->nama_mhs = null;
         $this->cv = null;
+        $this->transkrip_nilai = null;
+        $this->sk = null;
         $this->foto = null;
     }
 }
