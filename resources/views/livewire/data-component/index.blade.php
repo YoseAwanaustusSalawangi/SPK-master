@@ -54,13 +54,21 @@
                     <td class=" align-middle">Belum Ada Foto</td>
                     @endif
                     <td class="text-center align-middle">
+                        <!-- <a href="#" wire:click.prevent="" class="btn btn-success"
+                            title="Verifikasi">
+                            <i class="fas fa-check"></i>
+                        </a>
+                        <a href="#" wire:click.prevent="" class="btn btn-danger"
+                            title="Batalkan Verifikasi">
+                            <i class="fas fa-times"></i>
+                        </a> -->
                         <a href="#" wire:click.prevent="ubah({{$mahasiswa->id}})" class="btn btn-primary"
                             title="Edit Data">
-                            <i class="fa fa-pencil-alt"></i>
+                            <i class="fa fa-edit"></i>
                         </a>
                         <a href="#" onclick="deleteConfirmation(event, {{$mahasiswa->id}})" wire.click=""
                             class="btn btn-danger" title="Hapus Data">
-                            <i class="fa fa-trash"></i>
+                            <i class="fa fa-eraser"></i>
                         </a>
                     </td>
                 </tr>
