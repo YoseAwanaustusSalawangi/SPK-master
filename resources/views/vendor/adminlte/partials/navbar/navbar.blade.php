@@ -1,7 +1,11 @@
+<?php
+$Role = $_COOKIE["role"];
+    ?>
+
 <nav class="main-header navbar
     {{ config('adminlte.classes_topnav_nav', 'navbar-expand') }}
     {{ config('adminlte.classes_topnav', 'navbar-white navbar-light') }}">
-
+    @if($Role == 1)
     {{-- Navbar left links --}}
     <ul class="navbar-nav">
         {{-- Left sidebar toggler link --}}
@@ -9,10 +13,12 @@
 
         {{-- Configured left links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-left'), 'item')
+       
 
         {{-- Custom left links --}}
         @yield('content_top_nav_left')
     </ul>
+    @endif
 
     {{-- Navbar right links --}}
     <ul class="navbar-nav ml-auto">

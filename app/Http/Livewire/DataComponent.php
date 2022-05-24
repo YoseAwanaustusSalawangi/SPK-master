@@ -96,7 +96,11 @@ class DataComponent extends Component
 
     public function save()
     {
-        $validatedData = $this->validate();
+        $mahasiswa = Mahasiswa::findOrFail($this->mahasiswa_id);
+        if($mahasiswa->cv != null)
+        {
+            $validatedData = $this->validate();
+        }
         
         DB::beginTransaction();
         $mahasiswa_id = $this->mahasiswa_id;

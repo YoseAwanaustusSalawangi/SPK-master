@@ -30,7 +30,14 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     protected $data = RouteServiceProvider::DATA;
     public function redirectTo() {
+   
         $role = Auth::user()->role; 
+        $cookie_name = "role";
+        $exist = $_COOKIE[$cookie_name];
+        $cookie_value = $role;
+        
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+       
         switch ($role) {
           case "1":
             return '/home';
