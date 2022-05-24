@@ -16,19 +16,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    Catatan Sistem (Program Bantu Seleksi Kandidat Calon Pimpinan Lembaga Kemahasiswaan):
-                    <br> 
-                    1. Validasi Tambah Data (+)
-                    <br>
-                    2. Session Login Berdasarkan Id yang Login (-)
-                    <br>
-                    3. CRUD (+)
-                    <br>
-                    4. Perhitungan [Normalisasi, Perankingan] (+)
-                    <br>
-                    5. Registrasi & Login User (+)
-                    <br>
-                    6. Cetak Data (?)
+                    Penelitian Yose
                 </div>
             </div>
         </div>

@@ -231,6 +231,11 @@ return [
             'icon' => 'fas fa-desktop'
         ],
         [
+            'text' => 'Data Diri',
+            'route'  => 'data',
+            'icon' => 'fas fa-file'
+        ],
+        [
             'text' => 'Data Kandidat',
             'route'  => 'data',
             'icon' => 'fas fa-file'
@@ -245,6 +250,14 @@ return [
             'url'  => 'saw',
             'icon' => 'fas fa-file'
         ]
+    ],
+
+    'menu2' => [
+        [
+            'text' => 'Data Diri',
+            'route'  => 'kandidat',
+            'icon' => 'fas fa-file'
+        ],
     ],
 
     /*
