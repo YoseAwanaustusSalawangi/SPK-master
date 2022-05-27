@@ -1,6 +1,6 @@
 <?php
-$Role = $_COOKIE["role"];
-    ?>
+    $Role = $_COOKIE["role"];
+?>
 
 <nav class="main-header navbar
     {{ config('adminlte.classes_topnav_nav', 'navbar-expand') }}

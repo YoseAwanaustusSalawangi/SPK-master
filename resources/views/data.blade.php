@@ -3,13 +3,21 @@
 @section('title', 'Data Diri')
 
 @section('content_header')
-<h3> Data Diri Kandidat</h3>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4>Selamat Datang <b>{{Auth::user()->name}}. </b>Silahkan mengisi data yang diperlukan untuk mengikuti PEMIRA!</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 @stop
 
 @section('content')
   <div class="row">
-      <div class="col-12">
-          @livewire('data-component')
-      </div>
+    <div class="col-12">
+        @livewire('data-component')
+    </div>
   </div>
 @stop
