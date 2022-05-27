@@ -27,10 +27,13 @@ Route::get('data', [
     \App\Http\Controllers\DataController::class, 'index'
 ])->name('data');
 
+Route::get('calon', [
+    \App\Http\Controllers\CalonController::class, 'index'
+])->name('calon');
+
 Route::get('kandidat', [
     \App\Http\Controllers\KandidatController::class, 'index'
 ])->name('kandidat');
-
 
 Route::get('saw', [
     \App\Http\Controllers\SawController::class, 'index'
@@ -43,5 +46,6 @@ Route::get('user', [
 Route::get('/pdf', [
     \App\Http\Controllers\ExportController::class, 'exportPDF'
 ])->name('exportPDF');
+
 
 

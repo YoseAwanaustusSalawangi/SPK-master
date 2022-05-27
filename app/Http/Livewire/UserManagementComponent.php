@@ -145,7 +145,7 @@ class UserManagementComponent extends Component
 
     public function renderUser()
     {
-        $user = new User();
+        $user = new Mahasiswa();
         if ($this->search) $user = $user->where(function($user) {
             return $user->where('email', 'like', '%'.$this->search.'%')
                 ->orWhere('name', 'like', '%'.$this->search.'%');

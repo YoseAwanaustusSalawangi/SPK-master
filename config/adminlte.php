@@ -231,8 +231,8 @@ return [
             'icon' => 'fas fa-desktop'
         ],
         [
-            'text' => 'Data Kandidat',
-            'route'  => 'data',
+            'text' => 'Daftar Kandidat',
+            'route'  => 'calon',
             'icon' => 'fas fa-file'
         ],
         [
