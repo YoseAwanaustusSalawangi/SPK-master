@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $role = Auth::user()->role;
+        $cookie_name = "role";
+        $exist = $_COOKIE[$cookie_name];
+        $cookie_value = $role;
+        
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         return view('home');
     }
 }
