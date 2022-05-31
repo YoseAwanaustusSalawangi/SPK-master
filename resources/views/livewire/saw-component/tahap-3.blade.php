@@ -46,7 +46,6 @@
                         <td>
                             {{number_format($normalisasi[$index]['skor'], 2, ".", ",")}}
                         </td>
-
                     </tr>
                 @endforeach
             @endif

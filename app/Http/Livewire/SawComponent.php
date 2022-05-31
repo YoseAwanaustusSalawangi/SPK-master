@@ -8,7 +8,7 @@ use App\Models\Kandidat;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use PDF;
-
+use Auth;
 
 class SawComponent extends Component
 {
@@ -90,7 +90,10 @@ class SawComponent extends Component
     {
         if ($this->error_messages != '') return 0;
 
-        $kandidat = Kandidat::all();
+        $session_id = Auth::user()->id;
+        $kandidat = Kandidat::where([
+            ['id_user', '=', $session_id],
+        ])->get();
         $atributs = Atribut::all();
 
         $datas = [];

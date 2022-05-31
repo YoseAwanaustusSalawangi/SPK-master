@@ -21,7 +21,7 @@
                     <th class="align-middle">Nama Mahasiswa</th>
                     <th class="align-middle">CV</th>
                     <th class="align-middle">Transkrip Nilai</th>
-                    <th class="align-middle">Surat Pengantar</th>
+                    <th class="align-middle">Surat Keterangan</th>
                     <th class="align-middle">Foto Kandidat</th>
                     <th class="text-center vertical-center">Opsi</th>
                 </tr>

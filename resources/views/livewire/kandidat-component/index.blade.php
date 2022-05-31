@@ -4,18 +4,6 @@
 
             <div class="col-3 mt-1">
                 <div class="input-group">
-                    <input type="text" wire:model="search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                        <button class="btn btn-default">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-3 mt-1">
-                <div class="input-group">
                     <button class="btn btn-primary" wire:click="tambah()" title="Tambah Data">
                         <i class="fa fa-plus"></i> Tambah
                     </button>
