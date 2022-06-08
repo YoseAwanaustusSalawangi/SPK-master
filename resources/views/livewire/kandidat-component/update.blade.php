@@ -7,7 +7,12 @@
     <div class="card-body">
         <div class="form-group">
             <label for="nim">NIM</label>
-            <input type="number" class="form-control @error('nim') is-invalid @enderror" wire:model="nim">
+            <select wire:model="nim" id="" class="form-control">
+                <option value="">--Pilih Salah Satu--</option>
+                @foreach($mahasiswaLists as $mahasiswa)
+                    <option value="{{$mahasiswa->nim_mhs}}">{{$mahasiswa->nim_mhs}}</option>
+                @endforeach
+            </select>
             @error('nim') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 

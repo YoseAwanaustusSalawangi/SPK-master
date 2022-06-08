@@ -19,10 +19,19 @@
                     <th class="align-middle">ID *</th>
                     <th class="align-middle">NIM</th>
                     <th class="align-middle">Nama Mahasiswa</th>
-                    <th class="align-middle">CV</th>
-                    <th class="align-middle">Transkrip Nilai</th>
-                    <th class="align-middle">Surat Keterangan</th>
-                    <th class="align-middle">Foto Kandidat</th>
+                    @foreach($kriterias as $kriteria)
+                    <th class="text-center align-middle">
+                        {{$kriteria->nama_kriteria}}
+                        @if($kriteria->satuan!="-")
+                        <br>
+                        <span class="text-sm">({{$kriteria->satuan}})</span>
+                        @endif
+                    </th>
+                    @endforeach
+                    <th class="text-center align-middle">CV</th>
+                    <th class="text-center align-middle">Transkrip Nilai</th>
+                    <th class="text-center align-middle">Surat Keterangan</th>
+                    <th class="text-center align-middle">Foto Kandidat</th>
                     <th class="text-center vertical-center">Opsi</th>
                 </tr>
             </thead>
@@ -32,6 +41,7 @@
                         <td class="align-middle">{{$mahasiswa->id}}</td>
                         <td class="align-middle">{{$mahasiswa->nim_mhs}}</td>
                         <td class="align-middle">{{$mahasiswa->nama_mhs}}</td>
+                        <td class="align-middle">{{$mahasiswa->ipk}}</td>
                         @if($mahasiswa->cv == null)
                         <td class="align-middle">Belum Ada CV</td>
                         @else

@@ -18,6 +18,7 @@ class DataComponent extends Component
     public $isModal = 0;
     public $mahasiswa;
     public $ipk;
+    public $kriterias;
     public $mahasiswa_id, $nim_mhs, $nama_mhs, $cv, $transkrip_nilai, $sk, $foto, $status;
     public $search;
     use WithFileUploads;
@@ -34,7 +35,8 @@ class DataComponent extends Component
     public function renderData()
     {
         $session_id = Auth::user()->id;
-        $this->kriterias = Kriteria::all();
+        $this->kriterias = Kriteria::where('id','1')
+            ->get();
     }
 
     public function renderUser()
@@ -69,6 +71,7 @@ class DataComponent extends Component
         return [
             'nim_mhs' => 'required|max:8|unique:mahasiswa,nim_mhs,' . $this->mahasiswa_id,
             'nama_mhs' => 'required|string|max:255',
+            'ipk' => 'required|numeric|max:4',
             'cv' => 'required|mimes:jpg,jpeg,png,pdf|max:2000',
             'foto' => 'required|image|max:2000',
             'transkrip_nilai' => 'required|mimes:pdf|max:2000',
@@ -82,6 +85,7 @@ class DataComponent extends Component
             'nim_mhs.required' => 'Nim Wajib Diisi!',
             'nim_mhs.max' => 'Nim Tidak Boleh Lebih dari 8!',
             'nama_mhs.required' => 'Nama Wajib Diisi!',
+            'ipk.required' => 'IPK Wajib Diisi!',
             'cv.required' => 'CV Wajib Diupload!',
             'cv.mimes' => 'CV Harus JPG,JPEG,PNG atau PDF!',
             'cv.max' => 'CV Tidak Boleh Lebih dari 2 MB',
@@ -120,18 +124,19 @@ class DataComponent extends Component
         [
             'nim_mhs' => $this->nim_mhs,
             'nama_mhs' => $this->nama_mhs,
+            'ipk' => $this->ipk,
             'cv' => $cv,
             'transkrip_nilai' => $tn,
             'sk' => $sk,
             'foto' => $foto
         ]);
 
-        $ipk = Atribut::updateOrCreate([
-            'mahasiswa_id' => $mahasiswa->id,
-            'kriteria_id' => 1
-        ], [
-            'value' => number_format($this->ipk, 2)
-        ]);
+        // $ipk = Atribut::updateOrCreate([
+        //     'mahasiswa_id' => $mahasiswa->id,
+        //     'kriteria_id' => 1
+        // ], [
+        //     'value' => number_format($this->ipk, 2)
+        // ]);
 
         $mahasiswa_id ? $this->emit('success_message', 'Berhasil Memperbaharui Data')
             : $this->emit('success_message', 'Berhasil Menambah Data');
@@ -151,16 +156,11 @@ class DataComponent extends Component
         $mahasiswa = Mahasiswa::find($mahasiswa_id);
         $this->nim_mhs = $mahasiswa->nim_mhs;
         $this->nama_mhs = $mahasiswa->nama_mhs;
+        $this->ipk = $mahasiswa->ipk;
         $this->cv = $mahasiswa->cv;
         $this->transkrip_nilai = $mahasiswa->transkrip_nilai;
         $this->sk = $mahasiswa->sk;
         $this->foto = $mahasiswa->foto;
-
-        $ipk = Atribut::where([
-            'mahasiswa_id' => $mahasiswa->id,
-            'kriteria_id' => 1
-        ])->first();
-        $this->ipk = $ipk ? number_format($ipk->real_value, 2) : '';
     }
 
     public function hapus($mahasiswa_id)

@@ -36,8 +36,7 @@ class KandidatComponent extends Component
 
     public function getMahasiswaLists()
     {
-        return Mahasiswa::where('nim_mhs')
-            ->get();
+        return Mahasiswa::all();
     }
 
     public function renderData()
@@ -113,6 +112,9 @@ class KandidatComponent extends Component
         $kandidat = Kandidat::updateOrCreate([
             'id' => $kandidat_id,
             'id_user' => $session_id
+        ],[
+            'nim' => $this->nim,
+            'nama' => $this->nama,
         ]);
 
         $ipk = Atribut::updateOrCreate([
