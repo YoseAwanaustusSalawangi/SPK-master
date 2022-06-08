@@ -6,6 +6,7 @@ use App\Models\Atribut;
 use App\Models\CripsDetail;
 use App\Models\Kriteria;
 use App\Models\Kandidat;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -19,6 +20,7 @@ class KandidatComponent extends Component
     public $kandidat;
     public $kandidat_id, $nim, $nama, $ipk, $keaktifan, $pengalaman_menjabat, $kesehatan, $komunikasi, $problem_solving, $kedisiplinan, $visi_misi;
     public $kriterias;
+    public $mahasiswaLists=[];
     public $isModal = 0;
     public $search; 
     protected $paginationTheme = 'bootstrap';
@@ -32,13 +34,16 @@ class KandidatComponent extends Component
         $this->isModal = 0;
     }
 
-    
+    public function getMahasiswaLists()
+    {
+        return Mahasiswa::where('nim_mhs')
+            ->get();
+    }
+
     public function renderData()
     {
         $session_id = Auth::user()->id;
-        // $this->kandidat = Kandidat::where([
-        //     ['id_user', '=', $session_id],
-        // ])->get();
+        $this->mahasiswaLists = $this->getMahasiswaLists();
         $this->kriterias = Kriteria::all();
     }
 
@@ -100,7 +105,7 @@ class KandidatComponent extends Component
 
     public function simpan()
     {
-        $validatedData = $this->validate();
+        // $validatedData = $this->validate();
 
         DB::beginTransaction();
         $kandidat_id = $this->kandidat_id;
@@ -108,9 +113,6 @@ class KandidatComponent extends Component
         $kandidat = Kandidat::updateOrCreate([
             'id' => $kandidat_id,
             'id_user' => $session_id
-        ], [
-            'nim' => $this->nim,
-            'nama' => $this->nama,
         ]);
 
         $ipk = Atribut::updateOrCreate([

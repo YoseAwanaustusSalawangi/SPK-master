@@ -12,4 +12,16 @@ class Mahasiswa extends Model
     protected $fillable = [
         'id_user', 'nim_mhs', 'nama_mhs', 'cv', 'transkrip_nilai', 'sk', 'foto', 'status'
     ];
+
+    public function atribut()
+    {
+        return $this->hasMany(Atribut::class, 'mahasiswa_id');
+    }
+
+    public function currentAtribut($kriteria_id)
+    {
+        return $this->atribut->filter(function ($atr) use ($kriteria_id)  {
+            return $kriteria_id==$atr['kriteria_id'];
+        })->first();
+    }
 }

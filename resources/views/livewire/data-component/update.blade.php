@@ -17,6 +17,13 @@
             @error('nama_mhs') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 
+        <div class="form-group">
+            <label for="ipk">IPK</label>
+            <input type="number" class="form-control @error('ipk') is-invalid @enderror" wire:model="ipk" max="4.00"
+                min="0.00" step="0.01">
+            @error('ipk') <span class="invalid-feedback">{{ $message }}</span> @enderror
+        </div>
+
         <form wire:submit.prevent="save" id="form-upload" enctype="multipart/from-data">
             <div class="form-group">
                 <label for="cv">CV Kandidat</label><br>

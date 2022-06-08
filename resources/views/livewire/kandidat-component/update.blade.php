@@ -13,14 +13,14 @@
 
         <div class="form-group">
             <label for="nama">Nama Kandidat</label>
-            <input type="text"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama">
+            <input type="text"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama" readonly>
             @error('nama') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 
         <div class="form-group">
             <label for="ipk">IPK</label>
             <input type="number" class="form-control @error('ipk') is-invalid @enderror" wire:model="ipk" max="4.00"
-                min="0.00" step="0.01">
+                min="0.00" step="0.01" readonly>
             @error('ipk') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 

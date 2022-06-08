@@ -10,7 +10,7 @@ class Atribut extends Model
     use HasFactory;
     protected $table='atribut';
     protected $fillable = [
-        'kriteria_id', 'kandidat_id', 'value'
+        'kriteria_id', 'kandidat_id','mahasiswa_id', 'value'
     ];
 
     public function kriteria()
@@ -21,6 +21,11 @@ class Atribut extends Model
     public function kandidat()
     {
         return $this->belongsTo(Kandidat::class, 'kandidat_id');
+    }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
     }
 
     public function getRealValueAttribute()

@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Mahasiswa;
+use App\Models\Kriteria;
+use App\Models\Atribut;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;
@@ -15,6 +17,7 @@ class DataComponent extends Component
 {
     public $isModal = 0;
     public $mahasiswa;
+    public $ipk;
     public $mahasiswa_id, $nim_mhs, $nama_mhs, $cv, $transkrip_nilai, $sk, $foto, $status;
     public $search;
     use WithFileUploads;
@@ -31,6 +34,7 @@ class DataComponent extends Component
     public function renderData()
     {
         $session_id = Auth::user()->id;
+        $this->kriterias = Kriteria::all();
     }
 
     public function renderUser()
@@ -122,6 +126,13 @@ class DataComponent extends Component
             'foto' => $foto
         ]);
 
+        $ipk = Atribut::updateOrCreate([
+            'mahasiswa_id' => $mahasiswa->id,
+            'kriteria_id' => 1
+        ], [
+            'value' => number_format($this->ipk, 2)
+        ]);
+
         $mahasiswa_id ? $this->emit('success_message', 'Berhasil Memperbaharui Data')
             : $this->emit('success_message', 'Berhasil Menambah Data');
 
@@ -144,6 +155,12 @@ class DataComponent extends Component
         $this->transkrip_nilai = $mahasiswa->transkrip_nilai;
         $this->sk = $mahasiswa->sk;
         $this->foto = $mahasiswa->foto;
+
+        $ipk = Atribut::where([
+            'mahasiswa_id' => $mahasiswa->id,
+            'kriteria_id' => 1
+        ])->first();
+        $this->ipk = $ipk ? number_format($ipk->real_value, 2) : '';
     }
 
     public function hapus($mahasiswa_id)
@@ -164,6 +181,7 @@ class DataComponent extends Component
         $this->mahasiswa_id = null;
         $this->nim_mhs = null;
         $this->nama_mhs = null;
+        $this->ipk = null;
         $this->cv = null;
         $this->transkrip_nilai = null;
         $this->sk = null;
