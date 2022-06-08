@@ -105,7 +105,7 @@ class KandidatComponent extends Component
 
     public function simpan()
     {
-        // $validatedData = $this->validate();
+        $validatedData = $this->validate();
 
         DB::beginTransaction();
         $kandidat_id = $this->kandidat_id;
