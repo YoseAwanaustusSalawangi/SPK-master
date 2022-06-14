@@ -1,13 +1,16 @@
 <!-- general form elements -->
+
+
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">{{$kandidat_id ? 'Update' : 'Tambah'}} Kandidat</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+        
         <div class="form-group">
             <label for="nim">NIM</label>
-            <select wire:model="nim" id="" class="form-control">
+            <select wire:model="nim" id="" class="form-control" onchange="handleSelectChange(event,{{$mahasiswaLists}})">
                 <option value="">--Pilih Salah Satu--</option>
                 @foreach($mahasiswaLists as $mahasiswa)
                     <option value="{{$mahasiswa->nim_mhs}}">{{$mahasiswa->nim_mhs}}</option>
@@ -15,16 +18,17 @@
             </select>
             @error('nim') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
+        
 
         <div class="form-group">
             <label for="nama">Nama Kandidat</label>
-            <input type="text"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama" readonly>
+            <input type="text" id="Nama"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama" readonly>
             @error('nama') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
 
         <div class="form-group">
             <label for="ipk">IPK</label>
-            <input type="number" class="form-control @error('ipk') is-invalid @enderror" wire:model="ipk" max="4.00"
+            <input type="number" id="Ipk" class="form-control @error('ipk') is-invalid @enderror" wire:model="ipk" max="4.00"
                 min="0.00" step="0.01" readonly>
             @error('ipk') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
@@ -88,5 +92,12 @@
             Batal
         </button>
     </div>
+
 </div>
+
+
+
+
+
+
 <!-- /.card -->

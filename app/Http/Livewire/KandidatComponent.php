@@ -243,7 +243,7 @@ class KandidatComponent extends Component
 
     public function tambah()
     {
-        $this->cleanInput();
+       $this->cleanInput();
         $this->openModal();
     }
 
