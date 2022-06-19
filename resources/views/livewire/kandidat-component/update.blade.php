@@ -10,7 +10,7 @@
         
         <div class="form-group">
             <label for="nim">NIM</label>
-            <select wire:model="nim" id="" class="form-control" onchange="handleSelectChange(event,{{$mahasiswaLists}})">
+            <select wire:model="nim" id="" class="form-control @error('nim') is-invalid @enderror" wire:click="getMahasiswaNim($event.target.value)">
                 <option value="">--Pilih Salah Satu--</option>
                 @foreach($mahasiswaLists as $mahasiswa)
                     <option value="{{$mahasiswa->nim_mhs}}">{{$mahasiswa->nim_mhs}}</option>
@@ -19,7 +19,6 @@
             @error('nim') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
         
-
         <div class="form-group">
             <label for="nama">Nama Kandidat</label>
             <input type="text" id="Nama"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama" readonly>

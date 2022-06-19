@@ -18,9 +18,12 @@ class KandidatComponent extends Component
     use WithPagination;
     use WithFileUploads;
     public $kandidat;
+    public $nim_mhs="";
+    public $test="";
     public $kandidat_id, $nim, $nama, $ipk, $keaktifan, $pengalaman_menjabat, $kesehatan, $komunikasi, $problem_solving, $kedisiplinan, $visi_misi;
     public $kriterias;
     public $mahasiswaLists=[];
+    public $mahasiswaNim;
     public $isModal = 0;
     public $search; 
     protected $paginationTheme = 'bootstrap';
@@ -37,6 +40,15 @@ class KandidatComponent extends Component
     public function getMahasiswaLists()
     {
         return Mahasiswa::all();
+    }
+
+    public function getMahasiswaNim($value)
+    {
+        $this->nim_mhs = $value;
+        if ($test = Mahasiswa::where('nim_mhs', $this->nim_mhs)->first()) {
+            $this->nama = $test->nama_mhs;
+            $this->ipk = $test->ipk;
+        }
     }
 
     public function renderData()
@@ -243,7 +255,7 @@ class KandidatComponent extends Component
 
     public function tambah()
     {
-       $this->cleanInput();
+        $this->cleanInput();
         $this->openModal();
     }
 
