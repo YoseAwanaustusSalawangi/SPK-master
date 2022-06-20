@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Mahasiswa;
+use App\Models\Kandidat;
 use App\Models\Kriteria;
 use App\Models\Atribut;
 use App\Models\User;
@@ -17,6 +18,7 @@ class DataComponent extends Component
 {
     public $isModal = 0;
     public $mahasiswa;
+    public $kandidat, $nim, $kandidat_id;
     public $ipk;
     public $kriterias;
     public $mahasiswa_id, $nim_mhs, $nama_mhs, $cv, $transkrip_nilai, $sk, $foto, $status;
@@ -69,7 +71,7 @@ class DataComponent extends Component
     }
     protected function rules() {
         return [
-            'nim_mhs' => 'required|max:8|unique:mahasiswa,nim_mhs,' . $this->mahasiswa_id,
+            'nim_mhs' => 'required|min:8|max:8|unique:mahasiswa,nim_mhs,' . $this->mahasiswa_id,
             'nama_mhs' => 'required|string|max:255',
             'ipk' => 'required|numeric|max:4',
             'cv' => 'required|mimes:jpg,jpeg,png,pdf|max:2000',
@@ -83,7 +85,8 @@ class DataComponent extends Component
         return[
             'nim_mhs.unique' => 'Nim Sudah Ada!!',
             'nim_mhs.required' => 'Nim Wajib Diisi!',
-            'nim_mhs.max' => 'Nim Tidak Boleh Lebih dari 8!',
+            'nim_mhs.min' => 'Nim Tidak Boleh Kurang Dari 8!',
+            'nim_mhs.max' => 'Nim Tidak Boleh Lebih Dari 8!',
             'nama_mhs.required' => 'Nama Wajib Diisi!',
             'ipk.required' => 'IPK Wajib Diisi!',
             'cv.required' => 'CV Wajib Diupload!',
@@ -117,6 +120,7 @@ class DataComponent extends Component
         $sk = $this->sk->storeAs('sk_pdf', $filesk);
         $filefoto = $this->foto->getClientOriginalName();
         $foto = $this->foto->storeAs('photos', $filefoto);
+
         $mahasiswa = Mahasiswa::updateOrCreate([
             'id' => $mahasiswa_id,
             'id_user' => $session_id
@@ -131,13 +135,24 @@ class DataComponent extends Component
             'foto' => $foto
         ]);
 
-        // $ipk = Atribut::updateOrCreate([
-        //     'mahasiswa_id' => $mahasiswa->id,
-        //     'kriteria_id' => 1
-        // ], [
-        //     'value' => number_format($this->ipk, 2)
-        // ]);
+        $nimK =  $this->nim_mhs;
+        $session_id = Auth::user()->id;
+        $kandidat = Kandidat::where('nim', $this->nim_mhs)->first();
+        if( $kandidat != null)
+        {
+            $kandidat->update(
+            [
+                'nim' => $this->nim_mhs,
+                'nama' => $this->nama_mhs,
+            ]);
 
+            $Atribut = Atribut::where('kandidat_id',$kandidat->id )->first();
+            $Atribut->update(
+                [
+                    'value' => number_format($this->ipk, 2)
+                ]);
+        }
+        
         $mahasiswa_id ? $this->emit('success_message', 'Berhasil Memperbaharui Data')
             : $this->emit('success_message', 'Berhasil Menambah Data');
 
@@ -151,8 +166,8 @@ class DataComponent extends Component
     {
         $this->openModal();
         $this->cleanInput();
-        $this->mahasiswa_id = $mahasiswa_id;
 
+        $this->mahasiswa_id = $mahasiswa_id;
         $mahasiswa = Mahasiswa::find($mahasiswa_id);
         $this->nim_mhs = $mahasiswa->nim_mhs;
         $this->nama_mhs = $mahasiswa->nama_mhs;
@@ -161,6 +176,7 @@ class DataComponent extends Component
         $this->transkrip_nilai = $mahasiswa->transkrip_nilai;
         $this->sk = $mahasiswa->sk;
         $this->foto = $mahasiswa->foto;
+
     }
 
     public function hapus($mahasiswa_id)

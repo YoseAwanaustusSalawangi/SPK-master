@@ -5,11 +5,20 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+
+        @if($mahasiswa_id)
         <div class="form-group">
             <label for="nim_mhs">NIM</label>
-            <input type="number" class="form-control @error('nim_mhs') is-invalid @enderror" wire:model="nim_mhs">
+            <input type="number" class="form-control @error('nim_mhs') is-invalid @enderror" wire:model="nim_mhs" readonly>
             @error('nim_mhs') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
+        @else
+        <div class="form-group">
+            <label for="nim_mhs">NIM</label>
+            <input type="number" class="form-control @error('nim_mhs') is-invalid @enderror" wire:model="nim_mhs" >
+            @error('nim_mhs') <span class="invalid-feedback">{{ $message }}</span> @enderror
+        </div>
+        @endif
 
         <div class="form-group">
             <label for="nama_mhs">Nama Kandidat</label>

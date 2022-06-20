@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mahasiswa as $mahasiswa)
+                @forelse ($mahasiswa as $mahasiswa)
                     <tr>
                         <td class="align-middle">{{$mahasiswa->id}}</td>
                         <td class="align-middle">{{$mahasiswa->nim_mhs}}</td>
@@ -55,7 +55,13 @@
                         <td class="text-center align-middle">Belum Ada Foto</td>
                         @endif
                     </tr>
-                @endforeach
+                    @empty
+                    <tr class="">
+                        <td colspan="16">
+                            <strong class="text-danger"><center>Data Belum Ada!!!</center></strong>
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

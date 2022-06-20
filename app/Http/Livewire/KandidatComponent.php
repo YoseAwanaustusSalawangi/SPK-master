@@ -84,7 +84,7 @@ class KandidatComponent extends Component
 
     protected function rules() {
         return [
-            'nim' => 'required|max:8|unique:kandidat,nim,' . $this->kandidat_id,
+            'nim' => 'required|min:8|max:8|unique:kandidat,nim,' . $this->kandidat_id,
             'nama' => 'required|string|max:255',
             'ipk' => 'required|numeric|max:4',
             'keaktifan' => 'required|numeric|max:100',
@@ -101,7 +101,8 @@ class KandidatComponent extends Component
         return[
             'nim.unique' => 'Nim Sudah Ada!!',
             'nim.required' => 'Nim Wajib Diisi!',
-            'nim.max' => 'Nim Tidak Boleh Lebih dari 8!',
+            'nim.min' => 'Nim Tidak Boleh Kurang Dari 8!',
+            'nim.max' => 'Nim Tidak Boleh Lebih Dari 8!',
             'nama.required' => 'Nama Wajib Diisi!',
             'ipk.required' => 'IPK Wajib Diisi!',
             'keaktifan.required' => 'IPK Wajib Diisi!',
