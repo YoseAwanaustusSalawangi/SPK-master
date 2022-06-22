@@ -191,61 +191,64 @@ class SawComponent extends Component
         $first = $datas->first();
 
         //ipk-> benefit
-        $ipk_default = isset($first['ipk']);
-        $ipk_default = $ipk_default ? $ipk_default->real_value : 0;
-        $ipk_base = $datas->reduce(function ($acc, $d) {
-            return $d['ipk']->real_value > $acc ? $d['ipk']->real_value : $acc;
-        }, $ipk_default);
+        if($first!= null)
+        {
+            $ipk_default = $first['ipk'];
+            $ipk_default = $ipk_default ? $ipk_default->real_value : 0;
+            $ipk_base = $datas->reduce(function ($acc, $d) {
+                return $d['ipk']->real_value > $acc ? $d['ipk']->real_value : $acc;
+            }, $ipk_default);
+        
 
-        //keaktifan
-        $keaktifan_default = isset($first['keaktifan']);
-        $keaktifan_default = $keaktifan_default ? $keaktifan_default->real_value : 0;
-        $keaktifan_base = $datas->reduce(function ($acc, $d) {
-            return $d['keaktifan']->real_value > $acc ? $d['keaktifan']->real_value : $acc;
-        }, $keaktifan_default);
+            //keaktifan
+            $keaktifan_default = $first['keaktifan'];
+            $keaktifan_default = $keaktifan_default ? $keaktifan_default->real_value : 0;
+            $keaktifan_base = $datas->reduce(function ($acc, $d) {
+                return $d['keaktifan']->real_value > $acc ? $d['keaktifan']->real_value : $acc;
+            }, $keaktifan_default);
 
-        //pengalaman_menjabat
-        $pengalaman_menjabat_default = isset($first['pengalaman_menjabat']);
-        $pengalaman_menjabat_default = $pengalaman_menjabat_default ? $pengalaman_menjabat_default->real_value : 0;
-        $pengalaman_menjabat_base = $datas->reduce(function ($acc, $d) {
-            return $d['pengalaman_menjabat']->real_value > $acc ? $d['pengalaman_menjabat']->real_value : $acc;
-        }, $pengalaman_menjabat_default);
+            //pengalaman_menjabat
+            $pengalaman_menjabat_default = $first['pengalaman_menjabat'];
+            $pengalaman_menjabat_default = $pengalaman_menjabat_default ? $pengalaman_menjabat_default->real_value : 0;
+            $pengalaman_menjabat_base = $datas->reduce(function ($acc, $d) {
+                return $d['pengalaman_menjabat']->real_value > $acc ? $d['pengalaman_menjabat']->real_value : $acc;
+            }, $pengalaman_menjabat_default);
 
-        //kesehatan
-        $kesehatan_default = isset($first['kesehatan']);
-        $kesehatan_default = $kesehatan_default ? $kesehatan_default->real_value : 0;
-        $kesehatan_base = $datas->reduce(function ($acc, $d) {
-            return $d['kesehatan']->real_value > $acc ? $d['kesehatan']->real_value : $acc;
-        }, $kesehatan_default);
+            //kesehatan
+            $kesehatan_default = $first['kesehatan'];
+            $kesehatan_default = $kesehatan_default ? $kesehatan_default->real_value : 0;
+            $kesehatan_base = $datas->reduce(function ($acc, $d) {
+                return $d['kesehatan']->real_value > $acc ? $d['kesehatan']->real_value : $acc;
+            }, $kesehatan_default);
 
-        //komunikasi
-        $komunikasi_default = isset($first['komunikasi']);
-        $komunikasi_default = $komunikasi_default ? $komunikasi_default->real_value : 0;
-        $komunikasi_base = $datas->reduce(function ($acc, $d) {
-            return $d['komunikasi']->real_value > $acc ? $d['komunikasi']->real_value : $acc;
-        }, $komunikasi_default);
+            //komunikasi
+            $komunikasi_default = $first['komunikasi'];
+            $komunikasi_default = $komunikasi_default ? $komunikasi_default->real_value : 0;
+            $komunikasi_base = $datas->reduce(function ($acc, $d) {
+                return $d['komunikasi']->real_value > $acc ? $d['komunikasi']->real_value : $acc;
+            }, $komunikasi_default);
 
-        //problem_solving
-        $problem_solving_default = isset($first['problem_solving']);
-        $problem_solving_default = $problem_solving_default ? $problem_solving_default->real_value : 0;
-        $problem_solving_base = $datas->reduce(function ($acc, $d) {
-            return $d['problem_solving']->real_value > $acc ? $d['problem_solving']->real_value : $acc;
-        }, $problem_solving_default);
+            //problem_solving
+            $problem_solving_default = $first['problem_solving'];
+            $problem_solving_default = $problem_solving_default ? $problem_solving_default->real_value : 0;
+            $problem_solving_base = $datas->reduce(function ($acc, $d) {
+                return $d['problem_solving']->real_value > $acc ? $d['problem_solving']->real_value : $acc;
+            }, $problem_solving_default);
 
-        //kedisiplinan-
-        $kedisiplinan_default = isset($first['kedisiplinan']);
-        $kedisiplinan_default = $kedisiplinan_default ? $kedisiplinan_default->real_value : 0;
-        $kedisiplinan_base = $datas->reduce(function ($acc, $d) {
-            return $d['kedisiplinan']->real_value > $acc ? $d['kedisiplinan']->real_value : $acc;
-        }, $kedisiplinan_default);
+            //kedisiplinan-
+            $kedisiplinan_default = $first['kedisiplinan'];
+            $kedisiplinan_default = $kedisiplinan_default ? $kedisiplinan_default->real_value : 0;
+            $kedisiplinan_base = $datas->reduce(function ($acc, $d) {
+                return $d['kedisiplinan']->real_value > $acc ? $d['kedisiplinan']->real_value : $acc;
+            }, $kedisiplinan_default);
 
-        //visi_misi
-        $visi_misi_default = isset($first['visi_misi']);
-        $visi_misi_default = $visi_misi_default ? $visi_misi_default->real_value : 0;
-        $visi_misi_base = $datas->reduce(function ($acc, $d) {
-            return $d['visi_misi']->real_value > $acc ? $d['visi_misi']->real_value : $acc;
-        }, $visi_misi_default);
-
+            //visi_misi
+            $visi_misi_default = $first['visi_misi'];
+            $visi_misi_default = $visi_misi_default ? $visi_misi_default->real_value : 0;
+            $visi_misi_base = $datas->reduce(function ($acc, $d) {
+                return $d['visi_misi']->real_value > $acc ? $d['visi_misi']->real_value : $acc;
+            }, $visi_misi_default);
+        }
         foreach ($datas as $key => $data)
         {
             $x = $data['ipk'] instanceof Atribut ? $data['ipk']['real_value'] : 0;
