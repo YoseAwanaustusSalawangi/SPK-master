@@ -20,7 +20,7 @@
                     </td>
                 </tr>
             @else
-                @foreach ($ranking as $index => $urutan)
+                @forelse ($ranking as $index => $urutan)
                     <tr>
                         <td class="text-center align-middle">{{$urutan}}</td>
                         <td class="text-center align-middle">
@@ -47,7 +47,13 @@
                             {{number_format($normalisasi[$index]['skor'], 2, ".", ",")}}
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr class="">
+                        <td colspan="16">
+                            <strong class="text-danger"><center>Data Belum Ada!!!</center></strong>
+                        </td>
+                    </tr>
+                @endforelse
             @endif
 
             </tbody>

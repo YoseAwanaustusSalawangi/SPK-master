@@ -21,7 +21,7 @@
                     </td>
                 </tr>
             @else
-                @foreach ($data_dasar as $key => $data)
+                @forelse ($data_dasar as $key => $data)
                     <tr>
                         <td class="text-center align-middle">{{$key+1}}</td>
                         <td class="text-center align-middle">{{$data['kandidat']->nim}}</td>
@@ -35,7 +35,13 @@
                         <td class="text-center align-middle">= {{$data['kedisiplinan']->value}} / {{$data['kedisiplinan_base']}} = {{number_format($data['kedisiplinan_result'], 2, ".", ",")}} </td>
                         <td class="text-center align-middle">= {{$data['visi_misi']->value}} / {{$data['visi_misi_base']}} = {{number_format($data['visi_misi_result'], 2, ".", ",")}} </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr class="">
+                        <td colspan="16">
+                            <strong class="text-danger"><center>Data Belum Ada!!!</center></strong>
+                        </td>
+                    </tr>
+                @endforelse
             @endif
             </tbody>
         </table>

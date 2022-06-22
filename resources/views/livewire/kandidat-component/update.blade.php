@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="nim">NIM</label>
             <select wire:model="nim" id="" class="form-control @error('nim') is-invalid @enderror" wire:click="getMahasiswaNim($event.target.value)">
-                <option value="">--Pilih Salah Satu--</option>
+                <option value="">--Pilih Nim--</option>
                 @foreach($mahasiswaLists as $mahasiswa)
                     <option value="{{$mahasiswa->nim_mhs}}">{{$mahasiswa->nim_mhs}}</option>
                 @endforeach
