@@ -226,7 +226,7 @@ return [
     'menu' => [
 
         [
-            'text' => 'Dashboard',
+            'text' => 'Beranda',
             'route'  => 'home',
             'icon' => 'fas fa-desktop'
         ],
