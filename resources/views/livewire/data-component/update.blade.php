@@ -1,3 +1,12 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-danger">Hati - Hati dalam mengisi data pastikan data yang akan di masukan atau di unggah sudah benar!!!</h4>
+        </div>
+      </div>
+    </div>
+</div>
 <!-- general form elements -->
 <div class="card card-primary">
     <div class="card-header">
