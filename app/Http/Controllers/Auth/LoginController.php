@@ -36,7 +36,7 @@ class LoginController extends Controller
         $exist = $_COOKIE[$cookie_name];
         $cookie_value = $role;
         
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+        setcookie($cookie_name, $cookie_value, time() + (60 * 60 * 24 * 30), "/");
        
         switch ($role) {
           case "1":
