@@ -7,7 +7,13 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        
+        @if($kandidat_id)
+        <div class="form-group">
+            <label for="nim">NIM</label>
+            <input type="number" class="form-control @error('nim') is-invalid @enderror" wire:model="nim" readonly>
+            @error('nim') <span class="invalid-feedback">{{ $message }}</span> @enderror
+        </div>
+        @else
         <div class="form-group">
             <label for="nim">NIM</label>
             <select wire:model="nim" id="" class="form-control @error('nim') is-invalid @enderror" wire:click="getMahasiswaNim($event.target.value)">
@@ -18,7 +24,7 @@
             </select>
             @error('nim') <span class="invalid-feedback">{{ $message }}</span> @enderror
         </div>
-        
+        @endif
         <div class="form-group">
             <label for="nama">Nama Kandidat</label>
             <input type="text" id="Nama"  class="form-control @error('nama') is-invalid @enderror" wire:model="nama" readonly>
