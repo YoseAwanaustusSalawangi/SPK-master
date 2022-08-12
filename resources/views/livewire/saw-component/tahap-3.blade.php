@@ -26,7 +26,7 @@
                         <td class="text-center align-middle">
                             {{$normalisasi[$index]['kandidat']['nama']}} ({{$normalisasi[$index]['kandidat']['nim']}})
                         </td>
-                        <td class="text-center align-middle">
+                        <!-- <td class="text-center align-middle">
                             ({{number_format($normalisasi[$index]['ipk_result'], 2, ".", ",")}}x{{$kriteria['ipk']}}%)
                             +
                             ({{number_format($normalisasi[$index]['keaktifan_result'], 2, ".", ",")}}x{{$kriteria['keaktifan']}}%)
@@ -42,10 +42,19 @@
                             ({{number_format($normalisasi[$index]['kedisiplinan_result'], 2, ".", ",")}}x{{$kriteria['kedisiplinan']}}%)
                             +
                             ({{number_format($normalisasi[$index]['visi_misi_result'], 2, ".", ",")}}x{{$kriteria['visi_misi']}}%)
-                        </td>
-                        <td>
+                        </td> -->
+                        <td class="text-center align-middle">
                             {{number_format($normalisasi[$index]['skor'], 2, ".", ",")}}
                         </td>
+                        @if($urutan <= 4)
+                        <td class="text-success">
+                            <center><b>Lolos</b></center>
+                        </td>
+                        @else
+                        <td class="text-danger">
+                            <center><b>Gagal</b></center>
+                        </td>
+                        @endif
                     </tr>
                     @empty
                     <tr class="">

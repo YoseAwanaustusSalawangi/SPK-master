@@ -81,8 +81,8 @@ class SawComponent extends Component
         $this->header_perankingan = [
             "Ranking",
             "Nama Kandidat",
-            "Perhitungan",
-            "Hasil Akhir"
+            "Hasil Akhir",
+            "Status"
         ];
     }
 
@@ -349,7 +349,10 @@ class SawComponent extends Component
             $datas[$key] = ++$ranking;
         }
         $this->ranking = $datas;
+
     }
+
+    
 
   
 
